@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calculator, Home, ArrowRight } from "lucide-react";
+import { Calculator, Home, ArrowRight, CheckCircle, Phone } from "lucide-react";
 
 const PriceCalculator = () => {
   const [formData, setFormData] = useState({
@@ -13,10 +13,55 @@ const PriceCalculator = () => {
     budget: "",
     location: ""
   });
+  const [showResults, setShowResults] = useState(false);
+  const [calculatedPrice, setCalculatedPrice] = useState({ min: 0, max: 0 });
+
+  const calculatePrice = () => {
+    const area = parseInt(formData.area) || 0;
+    const baseRates = {
+      "full-home": { min: 1800, max: 2500 },
+      "kitchen": { min: 150000, max: 300000 },
+      "bedroom": { min: 120000, max: 250000 },
+      "living-room": { min: 100000, max: 200000 },
+      "wardrobe": { min: 80000, max: 150000 },
+      "renovation": { min: 1200, max: 2000 }
+    };
+
+    const locationMultiplier = {
+      "mumbai": 1.3,
+      "delhi": 1.2,
+      "bangalore": 1.15,
+      "pune": 1.1,
+      "hyderabad": 1.05,
+      "chennai": 1.05,
+      "kolkata": 1.0,
+      "other": 1.0
+    };
+
+    const rates = baseRates[formData.projectType as keyof typeof baseRates] || { min: 1500, max: 2200 };
+    const multiplier = locationMultiplier[formData.location as keyof typeof locationMultiplier] || 1.0;
+
+    let min, max;
+    if (formData.projectType === "full-home" || formData.projectType === "renovation") {
+      min = Math.round(rates.min * area * multiplier);
+      max = Math.round(rates.max * area * multiplier);
+    } else {
+      min = Math.round(rates.min * multiplier);
+      max = Math.round(rates.max * multiplier);
+    }
+
+    return { min, max };
+  };
 
   const handleCalculate = () => {
-    // Price calculation logic would go here
-    console.log("Calculating price for:", formData);
+    if (!formData.projectType || !formData.area || !formData.budget || !formData.location) {
+      alert("Please fill in all fields to calculate the price.");
+      return;
+    }
+    
+    const price = calculatePrice();
+    setCalculatedPrice(price);
+    setShowResults(true);
   };
 
   return (
@@ -132,6 +177,35 @@ const PriceCalculator = () => {
                   Get instant estimate • Free consultation included • No obligations
                 </p>
               </div>
+
+              {showResults && (
+                <Card className="mt-6 border-2 border-accent-gold bg-gradient-section animate-scale-in">
+                  <CardContent className="p-6">
+                    <div className="text-center">
+                      <CheckCircle className="w-12 h-12 text-accent-gold mx-auto mb-4" />
+                      <h3 className="text-2xl font-bold text-primary-dark mb-4">
+                        Your Estimated Project Cost
+                      </h3>
+                      <div className="text-4xl font-bold bg-gradient-gold bg-clip-text text-transparent mb-4">
+                        ₹{calculatedPrice.min.toLocaleString()} - ₹{calculatedPrice.max.toLocaleString()}
+                      </div>
+                      <p className="text-neutral-medium mb-6">
+                        *Final pricing may vary based on material selection and design complexity
+                      </p>
+                      
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <Button className="bg-accent-gold text-primary hover:opacity-90 font-semibold">
+                          <Phone className="w-4 h-4 mr-2" />
+                          Book Free Consultation
+                        </Button>
+                        <Button variant="outline" className="border-accent-gold text-accent-gold hover:bg-accent-gold hover:text-primary">
+                          Download Detailed Quote
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
             </CardContent>
           </Card>
         </div>
