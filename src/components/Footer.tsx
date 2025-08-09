@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -12,13 +13,18 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div>
-              <a href="/" className="flex items-center gap-2 mb-2" aria-label="Amenify Home">
-                <span className="text-2xl font-extrabold tracking-tight uppercase text-primary-foreground">Amenify</span>
+              <a href="/" className="flex items-center gap-3 mb-2" aria-label="Amenify Home">
+                <img 
+                  src="/amenify-logo.png" 
+                  alt="Amenify Logo" 
+                  className="h-8 w-auto"
+                />
+                {/* <span className="text-2xl font-extrabold tracking-tight uppercase text-primary-foreground">Amenify</span> */}
                 <span className="sr-only">Luxury Interior Design</span>
               </a>
               <p className="text-white/80">
-                Luxury Smart Interiors with patented AR/VR technology. 
-                Transform your space with USA quality in India.
+                India's most trusted interior design company with $20M funding and 100,000+ happy homes. 
+                Premium home & office interiors with AR/VR technology across 8+ major cities.
               </p>
             </div>
             
@@ -45,11 +51,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-accent-gold" />
-                <span>info@amenify.in</span>
+                <span>india@amenify.com</span>
               </div>
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent-gold mt-1" />
-                <span>Delhi NCR, India</span>
+                <span>Emaar Digital Greens, Sector 61, Gurugram</span>
               </div>
               <div className="flex items-center gap-3">
                 <Clock className="w-5 h-5 text-accent-gold" />
@@ -71,15 +77,15 @@ const Footer = () => {
               <a href="#portfolio" className="block hover:text-accent-gold transition-colors">
                 Portfolio
               </a>
-              <a href="#about" className="block hover:text-accent-gold transition-colors">
+              <Link to="/about" className="block hover:text-accent-gold transition-colors">
                 About Us
-              </a>
-              <a href="#" className="block hover:text-accent-gold transition-colors">
+              </Link>
+              <Link to="/privacy" className="block hover:text-accent-gold transition-colors">
                 Privacy Policy
-              </a>
-              <a href="#" className="block hover:text-accent-gold transition-colors">
+              </Link>
+              <Link to="/terms" className="block hover:text-accent-gold transition-colors">
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -124,12 +130,10 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-white/80 text-sm">
-              © 2024 Amenify India Pvt Ltd. All rights reserved. | Serving since 2017
+              © 2024 Amenify India Pvt Ltd. All rights reserved. | $20M Funded • 100K+ Happy Homes
             </div>
             <div className="flex items-center gap-6 text-sm">
-              <span className="text-accent-gold font-medium">Mr. Siddharth Dogra</span>
-              <span className="text-white/60">|</span>
-              <span className="text-white/80">Luxury Smart Interiors</span>
+              <span className="text-accent-gold font-medium">NCR • Mumbai • Bangalore • Pune • Hyderabad • Chennai • Kolkata • Chandigarh</span>
             </div>
           </div>
         </div>

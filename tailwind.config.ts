@@ -60,6 +60,18 @@ export default {
 					light: 'hsl(var(--neutral-light))',
 					medium: 'hsl(var(--neutral-medium))'
 				},
+				warm: {
+					orange: 'hsl(var(--warm-orange))',
+					coral: 'hsl(var(--warm-coral))',
+					cream: 'hsl(var(--warm-cream))'
+				},
+				sage: {
+					green: 'hsl(var(--sage-green))'
+				},
+				dusty: {
+					blue: 'hsl(var(--dusty-blue))'
+				},
+				terracotta: 'hsl(var(--terracotta))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -79,7 +91,9 @@ export default {
 			backgroundImage: {
 				'gradient-hero': 'var(--gradient-hero)',
 				'gradient-gold': 'var(--gradient-gold)',
-				'gradient-section': 'var(--gradient-section)'
+				'gradient-section': 'var(--gradient-section)',
+				'gradient-warm': 'var(--gradient-warm)',
+				'gradient-nature': 'var(--gradient-nature)'
 			},
 			boxShadow: {
 				'luxury': 'var(--shadow-luxury)',

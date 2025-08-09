@@ -1,11 +1,26 @@
 import { Button } from "@/components/ui/button";
-import { Menu, Phone, MapPin } from "lucide-react";
+import { Menu, Phone, MapPin, X } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    setIsMobileMenuOpen(false); // Close mobile menu after navigation
+  };
+
   return (
     <>
       {/* Top Bar */}
-      <div className="bg-primary-dark text-primary-foreground py-2 px-4 text-sm">
+      <div className="bg-gradient-hero text-white py-2 px-4 text-sm hidden md:block">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
@@ -14,11 +29,12 @@ const Header = () => {
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4" />
-              <span>Serving Delhi NCR</span>
+              <span className="hidden lg:inline">8+ Cities | NCR • Mumbai • Bangalore • Pune</span>
+              <span className="lg:hidden">8+ Cities</span>
             </div>
           </div>
-          <div className="text-accent-gold font-medium">
-            Serving since 2017
+          <div className="text-white font-medium hidden xl:block">
+            $20M Funded • 100K+ Happy Homes
           </div>
         </div>
       </div>
@@ -28,38 +44,107 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <a href="/" className="flex items-center gap-2" aria-label="Amenify Home">
-              <span className="text-2xl font-extrabold tracking-tight uppercase text-foreground">Amenify</span>
+            <Link to="/" className="flex items-center gap-3" aria-label="Amenify Home">
+              <img 
+                src="/amenify-logo.png" 
+                alt="Amenify Logo" 
+                className="h-6 w-auto"
+              />
+              
               <span className="sr-only">Luxury Interior Design</span>
-            </a>
+            </Link>
 
             {/* Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="#services" className="text-foreground hover:text-accent-gold transition-colors">
+              <button 
+                onClick={() => scrollToSection('services')} 
+                className="text-foreground hover:text-accent-gold transition-colors cursor-pointer"
+              >
                 Services
-              </a>
-              <a href="#process" className="text-foreground hover:text-accent-gold transition-colors">
+              </button>
+              <button 
+                onClick={() => scrollToSection('process')} 
+                className="text-foreground hover:text-accent-gold transition-colors cursor-pointer"
+              >
                 How It Works
-              </a>
-              <a href="#portfolio" className="text-foreground hover:text-accent-gold transition-colors">
+              </button>
+              <button 
+                onClick={() => scrollToSection('portfolio')} 
+                className="text-foreground hover:text-accent-gold transition-colors cursor-pointer"
+              >
                 Portfolio
-              </a>
-              <a href="#about" className="text-foreground hover:text-accent-gold transition-colors">
+              </button>
+              <Link to="/about" className="text-foreground hover:text-accent-gold transition-colors">
                 About
-              </a>
+              </Link>
             </nav>
 
             {/* CTA Button */}
             <div className="flex items-center gap-4">
-              <Button variant="hero" size="lg" className="hidden sm:flex">
+              <Button 
+                variant="hero" 
+                size="lg" 
+                className="hidden sm:flex"
+                onClick={() => scrollToSection('typeform-calculator')}  
+              >
                 Get Free Estimate
               </Button>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="w-5 h-5" />
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="md:hidden"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </Button>
             </div>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-background border-t border-border">
+            <div className="px-4 py-6 space-y-4">
+              <button 
+                onClick={() => scrollToSection('services')} 
+                className="block w-full text-left text-foreground hover:text-accent-gold transition-colors py-2 border-b border-border/50"
+              >
+                Services
+              </button>
+              <button 
+                onClick={() => scrollToSection('process')} 
+                className="block w-full text-left text-foreground hover:text-accent-gold transition-colors py-2 border-b border-border/50"
+              >
+                How It Works
+              </button>
+              <button 
+                onClick={() => scrollToSection('portfolio')} 
+                className="block w-full text-left text-foreground hover:text-accent-gold transition-colors py-2 border-b border-border/50"
+              >
+                Portfolio
+              </button>
+              <Link 
+                to="/about" 
+                className="block w-full text-left text-foreground hover:text-accent-gold transition-colors py-2 border-b border-border/50"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                About
+              </Link>
+              <Button 
+                variant="hero" 
+                size="lg" 
+                className="w-full mt-4"
+                onClick={() => {
+                  scrollToSection('typeform-calculator');
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                Get Free Estimate
+              </Button>
+            </div>
+          </div>
+        )}
       </header>
     </>
   );

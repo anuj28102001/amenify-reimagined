@@ -39,18 +39,33 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
     
-    /* Custom design tokens - Black & White theme */
-    --primary-dark: 0 0% 0%;
-    --primary-charcoal: 0 0% 10%;
-    --accent-gold: 0 0% 20%;
-    --accent-gold-light: 0 0% 30%;
-    --neutral-light: 0 0% 96%;
-    --neutral-medium: 0 0% 45%;
+    /* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom design tokens - Warm Interior Design theme */
+    --primary-dark: 15 25% 15%;
+    --primary-charcoal: 20 20% 25%;
+    --accent-gold: 35 100% 50%;
+    --accent-gold-light: 35 80% 65%;
+    --neutral-light: 35 20% 96%;
+    --neutral-medium: 25 15% 45%;
     
-    /* Gradients - Black & White */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary-charcoal)));
-    --gradient-gold: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary-charcoal)));
-    --gradient-section: linear-gradient(180deg, hsl(var(--background)), hsl(var(--neutral-light)));
+    /* Additional warm colors */
+    --warm-orange: 25 95% 60%;
+    --warm-coral: 15 85% 65%;
+    --warm-cream: 45 40% 92%;
+    --sage-green: 120 25% 60%;
+    --dusty-blue: 210 30% 70%;
+    --terracotta: 15 60% 55%;
+    
+    /* Gradients - Warm & Inviting */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--warm-orange)), hsl(var(--accent-gold)));
+    --gradient-gold: linear-gradient(135deg, hsl(var(--accent-gold)), hsl(var(--warm-coral)));
+    --gradient-section: linear-gradient(180deg, hsl(var(--warm-cream)), hsl(var(--neutral-light)));
+    --gradient-warm: linear-gradient(135deg, hsl(var(--warm-coral)), hsl(var(--dusty-blue)));
+    --gradient-nature: linear-gradient(135deg, hsl(var(--sage-green)), hsl(var(--warm-cream)));
     
     /* Shadows */
     --shadow-luxury: 0 25px 50px -12px hsl(var(--primary-dark) / 0.25);

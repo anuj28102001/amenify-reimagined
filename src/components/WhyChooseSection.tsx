@@ -44,22 +44,22 @@ const WhyChooseSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section id="about" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <Badge className="bg-accent-gold text-primary font-semibold mb-4">
             🏆 Why Choose Amenify
           </Badge>
           <h2 className="text-4xl lg:text-5xl font-bold text-primary-dark mb-6">
-            India's Most{" "}
+            Why{" "}
             <span className="bg-gradient-gold bg-clip-text text-transparent">
-              Trusted
+              100,000+ Customers
             </span>{" "}
-            Interior Brand
+            Choose Amenify
           </h2>
           <p className="text-xl text-neutral-medium max-w-3xl mx-auto">
-            Join thousands of satisfied customers who chose Amenify for their dream home transformation. 
-            Here's what makes us different.
+            $20M funded company with proven track record across 8+ cities. We beat LiveSpace & HomeLane 
+            with better technology, pricing, and warranty. Here's why we're #1:
           </p>
         </div>
 
@@ -67,7 +67,7 @@ const WhyChooseSection = () => {
           {benefits.map((benefit, index) => (
             <Card 
               key={index}
-              className="border-2 border-border hover:border-accent-gold hover:shadow-card transition-all duration-300 group animate-fade-in-up"
+              className="border-2 border-border hover:border-accent-gold hover:shadow-card transition-all duration-300 group animate-fade-in-up cursor-pointer"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="p-6 text-center">
@@ -88,20 +88,20 @@ const WhyChooseSection = () => {
         <div className="mt-16 text-center">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl lg:text-4xl font-bold text-primary-dark mb-2">10K+</div>
+              <div className="text-3xl lg:text-4xl font-bold text-primary-dark mb-2">100K+</div>
               <div className="text-neutral-medium">Happy Homes</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl lg:text-4xl font-bold text-primary-dark mb-2">15+</div>
-              <div className="text-neutral-medium">Cities</div>
+              <div className="text-3xl lg:text-4xl font-bold text-primary-dark mb-2">8+</div>
+              <div className="text-neutral-medium">Major Cities</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl lg:text-4xl font-bold text-primary-dark mb-2">500+</div>
-              <div className="text-neutral-medium">Design Experts</div>
+              <div className="text-3xl lg:text-4xl font-bold text-primary-dark mb-2">$20M</div>
+              <div className="text-neutral-medium">Funding Raised</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl lg:text-4xl font-bold text-primary-dark mb-2">4.9★</div>
-              <div className="text-neutral-medium">Customer Rating</div>
+              <div className="text-3xl lg:text-4xl font-bold text-primary-dark mb-2">60K+</div>
+              <div className="text-neutral-medium">Five Star Reviews</div>
             </div>
           </div>
         </div>

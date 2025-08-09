@@ -77,41 +77,72 @@ const ProcessSection = () => {
           {steps.map((step, index) => (
             <Card 
               key={index} 
-              className="relative border-2 border-border hover:border-accent-gold hover:shadow-card transition-all duration-300 group animate-fade-in-up"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="relative overflow-hidden border-0 bg-white hover:shadow-luxury transition-all duration-500 group animate-fade-in-up cursor-pointer"
+              style={{ 
+                animationDelay: `${index * 100}ms`,
+                background: `linear-gradient(135deg, ${step.color.includes('blue') ? '#dbeafe' : 
+                           step.color.includes('purple') ? '#f3e8ff' :
+                           step.color.includes('green') ? '#dcfce7' :
+                           step.color.includes('orange') ? '#fed7aa' :
+                           step.color.includes('red') ? '#fecaca' :
+                           '#e0e7ff'} 0%, white 30%)`
+              }}
             >
-              <CardContent className="p-6">
-                <div className="space-y-4">
-                  {/* Step Number */}
-                  <div className="flex items-center justify-between">
-                    <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white font-bold`}>
-                      {step.number}
-                    </div>
-                    <Badge variant="outline" className="border-accent-gold text-accent-gold">
-                      {step.payment}
-                    </Badge>
-                  </div>
+              {/* Step Number Badge */}
+              <div className="absolute -top-2 -left-2 z-10">
+                <div className={`w-14 h-14 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white font-bold text-lg shadow-lg border-4 border-white`}>
+                  {step.number}
+                </div>
+              </div>
 
+              {/* Payment Badge */}
+              <div className="absolute top-4 right-4">
+                <Badge className="bg-white/90 backdrop-blur-sm text-gray-700 font-semibold border border-gray-200">
+                  {step.payment}
+                </Badge>
+              </div>
+
+              <CardContent className="p-6 pt-8">
+                <div className="space-y-5">
                   {/* Icon */}
-                  <div className="p-3 bg-accent-gold rounded-lg w-fit text-primary group-hover:scale-110 transition-transform duration-300">
-                    {step.icon}
+                  <div className="flex justify-center">
+                    <div className={`p-4 rounded-xl text-white shadow-lg group-hover:scale-110 transition-transform duration-300 bg-gradient-to-r ${step.color}`}>
+                      {step.icon}
+                    </div>
                   </div>
 
                   {/* Content */}
-                  <div>
-                    <h3 className="text-xl font-semibold text-primary-dark mb-2">
+                  <div className="text-center">
+                    <h3 className="text-xl font-bold text-primary-dark mb-3 group-hover:text-primary-charcoal transition-colors">
                       {step.title}
                     </h3>
-                    <p className="text-neutral-medium">
+                    <p className="text-gray-600 leading-relaxed text-sm">
                       {step.description}
                     </p>
+                  </div>
+
+                  {/* Progress Indicator */}
+                  <div className="flex justify-center">
+                    <div className="flex space-x-1">
+                      {[...Array(6)].map((_, i) => (
+                        <div 
+                          key={i}
+                          className={`w-2 h-2 rounded-full ${
+                            i <= index ? 'bg-warm-coral' : 'bg-gray-200'
+                          }`}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
               </CardContent>
 
-              {/* Connection Line (for larger screens) */}
+              {/* Connection Arrow */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-accent-gold transform -translate-y-1/2 opacity-50"></div>
+                <div className="hidden lg:block absolute top-1/2 -right-6 z-20">
+                  <div className="w-12 h-0.5 bg-gradient-to-r from-warm-coral to-transparent"></div>
+                  <div className="absolute -right-1 -top-1 w-3 h-3 bg-warm-coral rounded-full"></div>
+                </div>
               )}
             </Card>
           ))}
@@ -132,23 +163,23 @@ const ProcessSection = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-16 animate-fade-in-up">
-          <div className="bg-white rounded-2xl p-8 shadow-card border-2 border-accent-gold">
-            <h3 className="text-2xl font-bold text-primary-dark mb-4">
-              Ready to Start Your Project?
+          <div className="bg-gradient-nature rounded-2xl p-8 shadow-card border-2 border-sage-green text-white">
+            <h3 className="text-2xl font-bold mb-4">
+              Ready to Create Your Dream Home?
             </h3>
-            <p className="text-neutral-medium mb-6 max-w-2xl mx-auto">
-              Begin with a free consultation and get your personalized 3D designs 
-              with instant pricing. No hidden costs, complete transparency.
+            <p className="text-white/90 mb-6 max-w-2xl mx-auto">
+              Start your journey with a free VR consultation. Experience your future home, 
+              get instant pricing, and fall in love with your space before we build it.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Badge className="bg-accent-gold text-primary font-semibold px-6 py-2">
-                ⚡ FREE Design Consultation
+              <Badge className="bg-warm-orange text-white font-semibold px-6 py-2">
+                ⚡ FREE VR Demo
               </Badge>
-              <Badge className="bg-primary-dark text-white font-semibold px-6 py-2">
+              <Badge className="bg-warm-coral text-white font-semibold px-6 py-2">
                 🎯 Instant Quote
               </Badge>
-              <Badge className="bg-green-500 text-white font-semibold px-6 py-2">
-                ✅ No Hidden Costs
+              <Badge className="bg-sage-green text-white font-semibold px-6 py-2">
+                ✅ Beat Any Quote
               </Badge>
             </div>
           </div>

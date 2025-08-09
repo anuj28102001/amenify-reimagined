@@ -5,6 +5,8 @@ import TechnologySection from "@/components/TechnologySection";
 import ServicesSection from "@/components/ServicesSection";
 import ProcessSection from "@/components/ProcessSection";
 import TypeformCalculator from "@/components/TypeformCalculator";
+import CompetitiveAdvantageSection from "@/components/CompetitiveAdvantageSection";
+import PortfolioSection from "@/components/PortfolioSection";
 import WhyChooseSection from "@/components/WhyChooseSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
@@ -16,6 +18,8 @@ const Index = () => {
       <Hero />
       <TechnologySection />
       <ServicesSection />
+      <PortfolioSection />
+      <CompetitiveAdvantageSection />
       <TypeformCalculator />
       <ProcessSection />
       <WhyChooseSection />
