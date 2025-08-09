@@ -12,9 +12,16 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-bold bg-gradient-gold bg-clip-text text-transparent mb-2">
-                amenify
-              </h3>
+              <a href="/" className="flex items-center gap-3 mb-2" aria-label="Amenify Home">
+                <img
+                  src="/lovable-uploads/dec9d5ec-adcb-469d-be63-0c820060f6ec.png"
+                  alt="Amenify logo - luxury interior designers"
+                  className="h-8 w-8 rounded-full"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className="text-xl font-bold tracking-wide text-primary-foreground">amenify</span>
+              </a>
               <p className="text-white/80">
                 Luxury Smart Interiors with patented AR/VR technology. 
                 Transform your space with USA quality in India.
