@@ -28,11 +28,16 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
-            <div className="flex items-center">
-              <h1 className="text-2xl font-bold bg-gradient-gold bg-clip-text text-transparent">
-                amenify
-              </h1>
-            </div>
+            <a href="/" className="flex items-center gap-3" aria-label="Amenify Home">
+              <img
+                src="/lovable-uploads/dec9d5ec-adcb-469d-be63-0c820060f6ec.png"
+                alt="Amenify logo - luxury interior designers"
+                className="h-8 w-8 rounded-full"
+                loading="eager"
+                decoding="async"
+              />
+              <span className="text-xl font-bold tracking-wide text-foreground">amenify</span>
+            </a>
 
             {/* Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
