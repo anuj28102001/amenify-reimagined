@@ -1,9 +1,10 @@
+
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import TechnologySection from "@/components/TechnologySection";
 import ServicesSection from "@/components/ServicesSection";
 import ProcessSection from "@/components/ProcessSection";
-import PriceCalculator from "@/components/PriceCalculator";
+import TypeformCalculator from "@/components/TypeformCalculator";
 import WhyChooseSection from "@/components/WhyChooseSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import Footer from "@/components/Footer";
@@ -15,7 +16,7 @@ const Index = () => {
       <Hero />
       <TechnologySection />
       <ServicesSection />
-      <PriceCalculator />
+      <TypeformCalculator />
       <ProcessSection />
       <WhyChooseSection />
       <TestimonialsSection />
